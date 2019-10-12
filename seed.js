@@ -1,12 +1,12 @@
 var data = require('./seed_data.js');
 var mongoose = require('mongoose');
-var Stories = require('./db/models/story.js');
+var Songs = require('./db/models/song.js');
 
-mongoose.connect('mongodb://localhost/hackednews');
+// mongoose.connect('mongodb://localhost');
 
 var seedDb = function(data) {
 
-  Stories.clear((err, instance) => {
+  Songs.clear((err, instance) => {
     if (err) {
        console.log(err);
     } else {
@@ -18,16 +18,7 @@ var seedDb = function(data) {
 
     console.log(data[i].by.id);
 
-    var story = {
-      id: data[i].id,
-      by: data[i].by.id,
-      title: data[i].title,
-      score: data[i].score,
-      karma: data[i].by.karma,
-      about: data[i].by.about
-    }
-
-    Stories.insertOne(story, (err, instance) => {
+    Songs.insertOne(story, (err, instance) => {
      if (err) {
         console.log(err);
      } else {

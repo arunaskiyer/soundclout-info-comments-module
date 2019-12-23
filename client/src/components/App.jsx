@@ -33,11 +33,9 @@ class App extends React.Component {
                         <TrackInfo/>
                         <Comments/>
                     </div>
-                    
                 </div>
             </div>
         )
     }
 }
-
 export default App;

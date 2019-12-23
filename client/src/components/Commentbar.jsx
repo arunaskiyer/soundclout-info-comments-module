@@ -15,7 +15,7 @@ class Commentbar extends React.Component{
                     </form>
                 </div>
             </div>
-           
+
            <div class='flex-container-interaction-bar'>
             <div class='flex-container-interaction'>
                 <button class='likes'></button>

@@ -28,17 +28,17 @@ var songSchema = mongoose.Schema({
     tracks: Number,
     pro: Boolean    
   },
-  comments: [
-      {
-        timeInSongSeconds: Number,
-        timePosted: Date,
-        commentText: String,
-        username: String,
-        picture: String,
-        followers: Number,
-        location: String
-      }
-  ]
+  // comments: [
+  //     {
+  //       timeInSongSeconds: Number,
+  //       timePosted: Date,
+  //       commentText: String,
+  //       username: String,
+  //       picture: String,
+  //       followers: Number,
+  //       location: String
+  //     }
+  // ]
 });
 
 var SongModel = mongoose.model('Song', songSchema);

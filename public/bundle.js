@@ -1100,6 +1100,10 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(2);
 
+var _Liked = __webpack_require__(27);
+
+var _Liked2 = _interopRequireDefault(_Liked);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1123,69 +1127,6 @@ var Commentbar = function (_React$Component) {
         key: 'render',
         value: function render() {
             var isLiked = this.props.liked;
-            if (isLiked) {
-                return _react2.default.createElement(
-                    'div',
-                    { 'class': 'flex-container-commentbar-interaction' },
-                    _react2.default.createElement(
-                        'div',
-                        { 'class': 'flex-container-commentbar' },
-                        _react2.default.createElement(
-                            'div',
-                            null,
-                            _react2.default.createElement('img', { className: 'headshot', src: 'http://localhost:4000/headshot.jpg' })
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            null,
-                            _react2.default.createElement(
-                                'form',
-                                null,
-                                _react2.default.createElement('input', { className: 'form', type: 'text', name: 'inputBox', placeholder: 'Write a comment', size: '60' })
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { 'class': 'flex-container-interaction-bar' },
-                        _react2.default.createElement(
-                            'div',
-                            { 'class': 'flex-container-interaction' },
-                            _react2.default.createElement('button', { 'class': 'liked' }),
-                            _react2.default.createElement('button', { 'class': 'reposts' }),
-                            _react2.default.createElement('button', { 'class': 'share' }),
-                            _react2.default.createElement('button', { 'class': 'next' }),
-                            _react2.default.createElement('button', { 'class': 'more' })
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { 'class': 'flex-container-stats' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'interaction-tiny-flex' },
-                                _react2.default.createElement('div', { className: 'plays-icon' }),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'plays' },
-                                    '267k'
-                                )
-                            ),
-                            _react2.default.createElement('div', { className: 'likes-icon' }),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'likes-stats' },
-                                '7,355'
-                            ),
-                            _react2.default.createElement('div', { className: 'reposts-icon' }),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'reposts-stats' },
-                                '507'
-                            )
-                        )
-                    )
-                );
-            }
             return _react2.default.createElement(
                 'div',
                 { 'class': 'flex-container-commentbar-interaction' },
@@ -1213,7 +1154,7 @@ var Commentbar = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         { 'class': 'flex-container-interaction' },
-                        _react2.default.createElement('button', { 'class': 'likes' }),
+                        _react2.default.createElement(_Liked2.default, { liked: this.props.liked }),
                         _react2.default.createElement('button', { 'class': 'reposts' }),
                         _react2.default.createElement('button', { 'class': 'share' }),
                         _react2.default.createElement('button', { 'class': 'next' }),
@@ -34025,6 +33966,72 @@ module.exports = function (list, options) {
     }
   };
 };
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var path = __webpack_require__(4);
+
+var Liked = function (_React$Component) {
+  _inherits(Liked, _React$Component);
+
+  function Liked(props) {
+    _classCallCheck(this, Liked);
+
+    var _this = _possibleConstructorReturn(this, (Liked.__proto__ || Object.getPrototypeOf(Liked)).call(this, props));
+
+    _this.state = {
+      isLiked: _this.props.liked
+    };
+    return _this;
+  }
+
+  _createClass(Liked, [{
+    key: 'handleChange',
+    value: function handleChange() {
+      var currentStatus = this.state.isLiked;
+      this.setState({
+        isLiked: !currentStatus
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (this.state.isLiked) {
+        return _react2.default.createElement('button', { 'class': 'liked', onClick: this.handleChange.bind(this) });
+      }
+      return _react2.default.createElement('button', { 'class': 'likes', onClick: this.handleChange.bind(this) });
+    }
+  }]);
+
+  return Liked;
+}(_react2.default.Component);
+
+exports.default = Liked;
 
 /***/ })
 /******/ ]);

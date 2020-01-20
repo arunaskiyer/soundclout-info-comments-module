@@ -877,7 +877,7 @@ var App = function (_React$Component) {
 
         _this.state = {
             comments: [],
-            liked: false
+            liked: true
         };
         return _this;
     }
@@ -1122,6 +1122,70 @@ var Commentbar = function (_React$Component) {
     _createClass(Commentbar, [{
         key: 'render',
         value: function render() {
+            var isLiked = this.props.liked;
+            if (isLiked) {
+                return _react2.default.createElement(
+                    'div',
+                    { 'class': 'flex-container-commentbar-interaction' },
+                    _react2.default.createElement(
+                        'div',
+                        { 'class': 'flex-container-commentbar' },
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement('img', { className: 'headshot', src: 'http://localhost:4000/headshot.jpg' })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'form',
+                                null,
+                                _react2.default.createElement('input', { className: 'form', type: 'text', name: 'inputBox', placeholder: 'Write a comment', size: '60' })
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { 'class': 'flex-container-interaction-bar' },
+                        _react2.default.createElement(
+                            'div',
+                            { 'class': 'flex-container-interaction' },
+                            _react2.default.createElement('button', { 'class': 'liked' }),
+                            _react2.default.createElement('button', { 'class': 'reposts' }),
+                            _react2.default.createElement('button', { 'class': 'share' }),
+                            _react2.default.createElement('button', { 'class': 'next' }),
+                            _react2.default.createElement('button', { 'class': 'more' })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { 'class': 'flex-container-stats' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'interaction-tiny-flex' },
+                                _react2.default.createElement('div', { className: 'plays-icon' }),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'plays' },
+                                    '267k'
+                                )
+                            ),
+                            _react2.default.createElement('div', { className: 'likes-icon' }),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'likes-stats' },
+                                '7,355'
+                            ),
+                            _react2.default.createElement('div', { className: 'reposts-icon' }),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'reposts-stats' },
+                                '507'
+                            )
+                        )
+                    )
+                );
+            }
             return _react2.default.createElement(
                 'div',
                 { 'class': 'flex-container-commentbar-interaction' },

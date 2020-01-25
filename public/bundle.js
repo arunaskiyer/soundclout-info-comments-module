@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -264,9 +264,9 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(20);
+  module.exports = __webpack_require__(21);
 } else {
-  module.exports = __webpack_require__(19);
+  module.exports = __webpack_require__(20);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -275,7 +275,7 @@ if (process.env.NODE_ENV === 'production') {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var content = __webpack_require__(14);
+var content = __webpack_require__(15);
 
 if (typeof content === 'string') {
   content = [[module.i, content, '']];
@@ -286,7 +286,7 @@ var options = {}
 options.insert = "head";
 options.singleton = false;
 
-var update = __webpack_require__(26)(content, options);
+var update = __webpack_require__(27)(content, options);
 
 if (content.locals) {
   module.exports = content.locals;
@@ -295,103 +295,6 @@ if (content.locals) {
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
-
-/* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
-};
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {// .dirname, .basename, and .extname methods are extracted from Node.js v8.11.1,
@@ -700,6 +603,103 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+
+/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -716,7 +716,7 @@ var substr = 'ab'.substr(-1) === 'b'
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(16);
+  var ReactPropTypesSecret = __webpack_require__(17);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -817,9 +817,9 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(24);
+  module.exports = __webpack_require__(25);
 } else {
-  module.exports = __webpack_require__(23);
+  module.exports = __webpack_require__(24);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -849,7 +849,7 @@ var _ArtistInfo = __webpack_require__(9);
 
 var _ArtistInfo2 = _interopRequireDefault(_ArtistInfo);
 
-var _TrackInfo = __webpack_require__(12);
+var _TrackInfo = __webpack_require__(13);
 
 var _TrackInfo2 = _interopRequireDefault(_TrackInfo);
 
@@ -877,8 +877,13 @@ var App = function (_React$Component) {
 
         _this.state = {
             comments: [],
-            liked: true
+            liked: false,
+            likeCount: 7533,
+            reposted: false,
+            repostCount: 507
         };
+        _this.handleLikeChangeApp = _this.handleLikeChangeApp.bind(_this);
+        _this.handleRepostChangeApp = _this.handleRepostChangeApp.bind(_this);
         return _this;
     }
 
@@ -894,12 +899,46 @@ var App = function (_React$Component) {
             });
         }
     }, {
+        key: 'handleLikeChangeApp',
+        value: function handleLikeChangeApp(likeStatus) {
+            var newLikeCount = this.state.likeCount;
+            if (likeStatus === true) {
+                newLikeCount++;
+            } else {
+                newLikeCount--;
+            }
+            this.setState({
+                liked: likeStatus,
+                likeCount: newLikeCount
+            });
+        }
+    }, {
+        key: 'handleRepostChangeApp',
+        value: function handleRepostChangeApp(repostStatus) {
+            var newRepostCount = this.state.repostCount;
+            if (repostStatus === true) {
+                newRepostCount++;
+            } else {
+                newRepostCount--;
+            }
+            this.setState({
+                reposted: repostStatus,
+                repostCount: newRepostCount
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
                 { className: 'comments-component' },
-                _react2.default.createElement(_Commentbar2.default, { liked: this.state.liked }),
+                _react2.default.createElement(_Commentbar2.default, { liked: this.state.liked,
+                    likedNum: this.state.likeCount,
+                    handleLikeChangeApp: this.handleLikeChangeApp,
+                    reposted: this.state.reposted,
+                    repostCount: this.state.repostCount,
+                    handleRepostChangeApp: this.handleRepostChangeApp
+                }),
                 _react2.default.createElement(
                     'div',
                     { className: 'flex-lower' },
@@ -959,9 +998,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(18);
+  module.exports = __webpack_require__(19);
 } else {
-  module.exports = __webpack_require__(17);
+  module.exports = __webpack_require__(18);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -993,7 +1032,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var path = __webpack_require__(4);
+var path = __webpack_require__(3);
 
 var ArtistInfo = function (_React$Component) {
   _inherits(ArtistInfo, _React$Component);
@@ -1089,7 +1128,7 @@ exports.default = ArtistInfo;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1100,9 +1139,13 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(2);
 
-var _Liked = __webpack_require__(27);
+var _Liked = __webpack_require__(12);
 
 var _Liked2 = _interopRequireDefault(_Liked);
+
+var _Reposted = __webpack_require__(28);
+
+var _Reposted2 = _interopRequireDefault(_Reposted);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1112,86 +1155,113 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var path = __webpack_require__(4);
+var path = __webpack_require__(3);
 
 var Commentbar = function (_React$Component) {
-    _inherits(Commentbar, _React$Component);
+  _inherits(Commentbar, _React$Component);
 
-    function Commentbar() {
-        _classCallCheck(this, Commentbar);
+  function Commentbar(props) {
+    _classCallCheck(this, Commentbar);
 
-        return _possibleConstructorReturn(this, (Commentbar.__proto__ || Object.getPrototypeOf(Commentbar)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Commentbar.__proto__ || Object.getPrototypeOf(Commentbar)).call(this, props));
+
+    _this.handleLikeChange = _this.handleLikeChange.bind(_this);
+    _this.handleRepostChange = _this.handleRepostChange.bind(_this);
+    _this.state = {
+      comments: [],
+      liked: _this.props.liked,
+      likeCount: _this.props.likedNum,
+      reposted: _this.props.reposted,
+      repostCount: _this.props.repostCount
+    };
+    return _this;
+  }
+
+  _createClass(Commentbar, [{
+    key: 'handleLikeChange',
+    value: function handleLikeChange(likeStatus) {
+      this.setState({
+        liked: likeStatus
+      });
+      this.props.handleLikeChangeApp(likeStatus);
     }
-
-    _createClass(Commentbar, [{
-        key: 'render',
-        value: function render() {
-            var isLiked = this.props.liked;
-            return _react2.default.createElement(
+  }, {
+    key: 'handleRepostChange',
+    value: function handleRepostChange(repostStatus) {
+      this.setState({
+        reposted: repostStatus
+      });
+      this.props.handleRepostChangeApp(repostStatus);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var isLiked = this.props.liked;
+      return _react2.default.createElement(
+        'div',
+        { 'class': 'flex-container-commentbar-interaction' },
+        _react2.default.createElement(
+          'div',
+          { 'class': 'flex-container-commentbar' },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement('img', { className: 'headshot', src: 'http://localhost:4000/headshot.jpg' })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'form',
+              null,
+              _react2.default.createElement('input', { className: 'form', type: 'text', name: 'inputBox', placeholder: 'Write a comment', size: '60' })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { 'class': 'flex-container-interaction-bar' },
+          _react2.default.createElement(
+            'div',
+            { 'class': 'flex-container-interaction' },
+            _react2.default.createElement(_Liked2.default, { liked: this.props.liked, likedNum: this.props.likedNum, onLikeChange: this.handleLikeChange }),
+            _react2.default.createElement(_Reposted2.default, { reposted: this.props.reposted, repostCount: this.props.repostCount, onRepostChange: this.handleRepostChange }),
+            _react2.default.createElement('button', { 'class': 'share' }),
+            _react2.default.createElement('button', { 'class': 'next' }),
+            _react2.default.createElement('button', { 'class': 'more' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { 'class': 'flex-container-stats' },
+            _react2.default.createElement(
+              'div',
+              { className: 'interaction-tiny-flex' },
+              _react2.default.createElement('div', { className: 'plays-icon' }),
+              _react2.default.createElement(
                 'div',
-                { 'class': 'flex-container-commentbar-interaction' },
-                _react2.default.createElement(
-                    'div',
-                    { 'class': 'flex-container-commentbar' },
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement('img', { className: 'headshot', src: 'http://localhost:4000/headshot.jpg' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement(
-                            'form',
-                            null,
-                            _react2.default.createElement('input', { className: 'form', type: 'text', name: 'inputBox', placeholder: 'Write a comment', size: '60' })
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { 'class': 'flex-container-interaction-bar' },
-                    _react2.default.createElement(
-                        'div',
-                        { 'class': 'flex-container-interaction' },
-                        _react2.default.createElement(_Liked2.default, { liked: this.props.liked }),
-                        _react2.default.createElement('button', { 'class': 'reposts' }),
-                        _react2.default.createElement('button', { 'class': 'share' }),
-                        _react2.default.createElement('button', { 'class': 'next' }),
-                        _react2.default.createElement('button', { 'class': 'more' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { 'class': 'flex-container-stats' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'interaction-tiny-flex' },
-                            _react2.default.createElement('div', { className: 'plays-icon' }),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'plays' },
-                                '267k'
-                            )
-                        ),
-                        _react2.default.createElement('div', { className: 'likes-icon' }),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'likes-stats' },
-                            '7,355'
-                        ),
-                        _react2.default.createElement('div', { className: 'reposts-icon' }),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'reposts-stats' },
-                            '507'
-                        )
-                    )
-                )
-            );
-        }
-    }]);
+                { className: 'plays' },
+                '267k'
+              )
+            ),
+            _react2.default.createElement('div', { className: 'likes-icon' }),
+            _react2.default.createElement(
+              'div',
+              { className: 'likes-stats' },
+              this.props.likedNum
+            ),
+            _react2.default.createElement('div', { className: 'reposts-icon' }),
+            _react2.default.createElement(
+              'div',
+              { className: 'reposts-stats' },
+              this.props.repostCount
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-    return Commentbar;
+  return Commentbar;
 }(_react2.default.Component);
 
 exports.default = Commentbar;
@@ -1223,7 +1293,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var path = __webpack_require__(4);
+var path = __webpack_require__(3);
 
 var Comments = function (_React$Component) {
     _inherits(Comments, _React$Component);
@@ -1322,6 +1392,80 @@ exports.default = Comments;
 
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var path = __webpack_require__(3);
+
+var Liked = function (_React$Component) {
+  _inherits(Liked, _React$Component);
+
+  function Liked(props) {
+    _classCallCheck(this, Liked);
+
+    var _this = _possibleConstructorReturn(this, (Liked.__proto__ || Object.getPrototypeOf(Liked)).call(this, props));
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    return _this;
+  }
+
+  _createClass(Liked, [{
+    key: 'handleChange',
+    value: function handleChange() {
+      var currentStatus = this.props.liked;
+      if (currentStatus === true) {
+        this.props.onLikeChange(false);
+      } else {
+        this.props.onLikeChange(true);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (this.props.liked) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement('button', { 'class': 'liked', onClick: this.handleChange })
+        );
+      }
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement('button', { 'class': 'likes', onClick: this.handleChange.bind(this) })
+      );
+    }
+  }]);
+
+  return Liked;
+}(_react2.default.Component);
+
+exports.default = Liked;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
@@ -1333,7 +1477,7 @@ __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var path = __webpack_require__(4);
+var path = __webpack_require__(3);
 
 var TrackInfo = function TrackInfo(props) {
     return _react2.default.createElement(
@@ -1399,7 +1543,7 @@ var TrackInfo = function TrackInfo(props) {
 exports.default = TrackInfo;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1422,16 +1566,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('comments'));
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(15)(false);
+exports = module.exports = __webpack_require__(16)(false);
 // Module
-exports.push([module.i, ".comments-component{\n    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;\n    width: 560px;\n    padding-right: 30px;\n}\n\n.form{\n    width: 483px;\n    height: 23px;\n    margin-top: 6.5px;\n    margin-left: 6px;\n    padding-left: 9px;\n    padding-right: 9px;\n    padding-top: 0px;\n    padding-bottom:0px;\n}\n\n.headshot {\n    height: 40px;\n    width: 40px;\n}\n\n.divider{\n    width:150px;\n    height:auto;\n    display:inline-block;\n}\n\n.dividerLine{\n    width:100%;\n    height:auto;\n    display:inline-block;\n}\n\n\n.flex-container-commentbar {\n    display: flex;\n    flex-direction: row;\n    height: 40px;\n    width: 557px;\n    background-color: #f2f2f2;\n}\n\n.flex-container-interaction {\n    display: flex;\n    flex-direction: row;\n    height: 33px;\n    width: 175px;\n    padding-top: 3px;\n    padding-bottom: 4px;\n}\n\n.flex-container-commentbar-interaction {\n    display: flex;\n    flex-direction: column;\n    height: 89px;\n    width: 559px;\n    padding-top: 3px;\n}\n\n.artistPic {\n    height: 120px;\n    width: 120px;\n    border-radius: 50%;\n}\n\n.flex-container-artist {\n    display: flex;\n    flex-direction: column;\n    height: 250px;\n    width: 120px;\n    padding-right:30px;\n}\n\n.flex-container-stats {\n    display: flex;\n    flex-direction: row;\n    justify-content: right;\n    height: 33px;\n    width: 382px;\n    margin-left: 210px;\n    margin-top: 8px;\n}\n\n.flex-container-interaction-bar {\n    display: flex;\n    flex-direction: row;\n    height: 33px;\n    width: 557px;\n}\n\n.flex-lower {\n    display: flex;\n    flex-direction: row;\n    height: 33px;\n    width: 557px;\n}\n\n.rack {\n    margin-left: 25px;\n    font-size: 14px;\n}\n\n.likes {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfbGlrZXNfZ3JleTwvdGl0bGU+PHBhdGggZD0iTTEwLjgwNSAzYy0yLjAyIDAtMi44MDQgMi4zNDUtMi44MDQgMi4zNDVTNy4yMTMgMyA1LjE5NiAzQzMuNDk0IDMgMS43NDggNC4wOTYgMi4wMyA2LjUxNGMuMzQ0IDIuOTUzIDUuNzI1IDYuNDc5IDUuOTYzIDYuNDg3LjIzOC4wMDggNS43MzgtMy43MjIgNS45ODgtNi41QzE0LjE4OCA0LjIwMSAxMi41MDcgMyAxMC44MDUgM3oiIGZpbGw9IiMwMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.liked {\n  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCAxNiAxNiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+DQogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjAuMyAoNzg5MSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+DQogICAgPHRpdGxlPnN0YXRzX2xpa2VzX2dyZXk8L3RpdGxlPg0KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPg0KICAgIDxkZWZzLz4NCiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4NCiAgICAgICAgPHBhdGggZD0iTTEwLjgwNDk4MTgsMyBDOC43ODQ3MTU3OSwzIDguMDAwNjUyODUsNS4zNDQ4NjQ4NiA4LjAwMDY1Mjg1LDUuMzQ0ODY0ODYgQzguMDAwNjUyODUsNS4zNDQ4NjQ4NiA3LjIxMjk2Mzg3LDMgNS4xOTYwNDQ5NCwzIEMzLjQ5NDMxMzE4LDMgMS43NDgzNzQsNC4wOTU5MjY5NCAyLjAzMDA4OTk2LDYuNTE0MzA1MzIgQzIuMzczNzI3NjUsOS40NjY3Mzc3NSA3Ljc1NDkxOTE3LDEyLjk5Mjg3MzggNy45OTMxMDk1OCwxMy4wMDEwNTU3IEM4LjIzMTI5OTk4LDEzLjAwOTIzNzggMTMuNzMwOTgyOCw5LjI3ODUzNzggMTMuOTgxNDU5LDYuNTAxMjQwNSBDMTQuMTg3ODY0Nyw0LjIwMDk3MDIzIDEyLjUwNjcxMzYsMyAxMC44MDQ5ODE4LDMgWiIgaWQ9IkltcG9ydGVkLUxheWVycyIgZmlsbD0icmdiKDIzNSwgNzgsIDApIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIi8+DQogICAgPC9nPg0KPC9zdmc+DQo=);\n  background-repeat: no-repeat;\n  background-position: center;\n  border-radius: 15%;\n  margin-right: 5px;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  padding-left: 11px;\n  padding-right: 10px;\n  height: 26px;\n  width: 31px;\n}\n\n.reposts {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfcmVwb3N0PC90aXRsZT48cGF0aCBkPSJNMiA2djVjMCAxLjEwNS45MDIgMiAyLjAwOSAyaDYuOTg3SDEwbC0yLTJINFY2aC0uNUg2TDMgMyAwIDZoMnptNC0zaC0uOTk2IDYuOTg3QzEzLjA5OCAzIDE0IDMuODk1IDE0IDV2NWgtMlY1SDhMNiAzem0xMCA3aC02bDMgMyAzLTN6IiBmaWxsPSIjMjIyIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.share {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c2hhcmU8L3RpdGxlPjxnIGZpbGw9IiMyMjIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTEyIDNDOC4wMzIgMyA3IDQuOCA3IDcuOGMxLjY0Mi0zIDQuMTU3LTIuNzk1IDUtMi43OTVWM3ptMC0ydjZsMy0zLTMtM3oiLz48cGF0aCBkPSJNMTQgN3Y0YTIgMiAwIDAgMS0yLjAwOSAySDQuMDFBMi4wMDYgMi4wMDYgMCAwIDEgMiAxMVY1YTIgMiAwIDAgMSAyLjAwOS0yaDMuMTlhNS45MzMgNS45MzMgMCAwIDAtMS4zODMgMkg0djZoOFY5bDItMnptLTMtMmgtLjA0bC4wNC0uMDFWNXoiLz48L2c+PC9zdmc+);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.artistName {\n    width: 139.73px;\n    height: 16px;\n    font-size: 14px;\n    font-weight: light;\n}\n\n.followButton {\n    height: 22px;\n    width: 49.94px;\n    background-color: #ff5500;\n    color: white;\n    border-radius: 15%;\n    margin-top: 8px;\n    margin-bottom: 9px;\n}\n\n.next{\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMHoiLz48cGF0aCBmaWxsPSIjMjIyIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik00IDloMTB2Mkg0Vjl6bTAgNGgxMHYySDR2LTJ6bTAtOGg4djJINFY1em0xMC00bDQgMy00IDNWMXoiLz48L2c+PC9zdmc+);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.more{\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iNCIgdmlld0JveD0iMCAwIDE0IDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPm1vcmU8L3RpdGxlPjxnIGZpbGw9IiMyMjIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiLz48Y2lyY2xlIGN4PSI3IiBjeT0iMiIgcj0iMiIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMiIgcj0iMiIvPjwvZz48L3N2Zz4=);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.followercount {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCI+PHBhdGggZmlsbD0icmdiYSgxNTMsIDE1MywgMTUzLCAwLjcpIiBkPSJNMTguNCAxOC41bDIuNSA1IC4yLjVIMjhsLTIuMS00LjMtNC4xLTEuNXYtMi41YzEuMi0xLjEgMS44LTMuMiAxLjgtNS4xIDAtMi4xLTItMy42LTMuNS0zLjZzLTMuNSAxLjYtMy41IDMuNmMwIDEuOS41IDQgMS44IDUuMXYyLjVoLS4xbC4xLjN6Ii8+PHBhdGggZmlsbD0iIzk5OSIgZD0iTTE3LjUgMTlsLTUtMS44di0zYzEuNC0xLjIgMi0zLjggMi01LjkgMC0yLjQtMi4zLTQuMy00LTQuMy0xLjcgMC00IDEuOC00IDQuMyAwIDIuMi42IDQuNyAyIDUuOXYzbC01IDEuOEwxIDI0aDE5bC0yLjUtNXoiLz48L3N2Zz4=);\n}\n\n.plays {\n    color: grey;\n    font-size: 12px;\n    width: 49px;\n    height: 16px;\n}\n\n.plays-icon {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfcGxheSA0PC90aXRsZT48cGF0aCBkPSJNNCAxM1YzbDkgNS05IDV6IiBmaWxsPSIjOTk5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);\n    display: inline-block;\n    right: 100%;\n    height: 16px;\n    width: 16px;\n}\n\n\n.interaction-tiny-flex {\n    display: flex;\n    flex-direction: row;\n}\n\n.likes-icon {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfbGlrZXNfZ3JleTwvdGl0bGU+PHBhdGggZD0iTTEwLjgwNSAzYy0yLjAyIDAtMi44MDQgMi4zNDUtMi44MDQgMi4zNDVTNy4yMTMgMyA1LjE5NiAzQzMuNDk0IDMgMS43NDggNC4wOTYgMi4wMyA2LjUxNGMuMzQ0IDIuOTUzIDUuNzI1IDYuNDc5IDUuOTYzIDYuNDg3LjIzOC4wMDggNS43MzgtMy43MjIgNS45ODgtNi41QzE0LjE4OCA0LjIwMSAxMi41MDcgMyAxMC44MDUgM3oiIGZpbGw9IiM5OTkiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);\n    display: inline-block;\n    right: 100%;\n    height: 16px;\n    width: 16px;\n}\n\n.likes-stats {\n    color: grey;\n    font-size: 12px;\n    cursor: pointer;\n    width: 49px;\n    height: 16px;\n}\n\n.reposts-icon {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfcmVwb3N0PC90aXRsZT48cGF0aCBkPSJNMiA2djVjMCAxLjEwNS45MDIgMiAyLjAwOSAyaDYuOTg3SDEwbC0yLTJINFY2aC0uNUg2TDMgMyAwIDZoMnptNC0zaC0uOTk2IDYuOTg3QzEzLjA5OCAzIDE0IDMuODk1IDE0IDV2NWgtMlY1SDhMNiAzem0xMCA3aC02bDMgMyAzLTN6IiBmaWxsPSIjOTk5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);\n    display: inline-block;\n    right: 100%;\n    height: 16px;\n    width: 16px;\n}\n\n.reposts-stats {\n    color: grey;\n    font-size: 12px;\n    cursor: pointer;\n    width: 49px;\n    height: 16px;\n}\n\n\n\n.fol-stats {\n    color: grey;\n    font-size: 12px;\n    width: 30px;\n    height: 14px;\n    margin-right: 9px;\n\n}\n\n.stats-artist {\n    display: flex;\n    flex-direction: row;\n    width: 120px;\n    height: 9px;\n    padding-top: 9px;\n    padding-bottom: 9px;\n}\n\n.report-icon {\n    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAQAAACR313BAAAAnElEQVR4AZXNUQqDMBCE4TlWKApbiGBEpVYphQb6knvkaDnalLWK60uhfjA+5CfBX1+SBAvJiPKmCc7HizwZaQJ73MvEucx4FRtsPy+BA8c84pHtDetUcmXDwC53uGf7BBKcXFhTg7a0uJWFR4B0ChoMnLgGEhGBqEwQuAayQOmoLaihQS89vnQ2+w1ePHbwhgaVVDjoGE4cLLifPnBzeJR4+XAqAAAAAElFTkSuQmCC);\n    background-repeat: no-repeat;\n    height: 20px;\n    width: 20px;\n    font-size: 12px;\n}\n\n.flex-container-report {\n    display: flex;\n    flex-direction: row;\n}\n\n.report {\n    font-size: 12px;\n}\n\n.track-info {\n    font-size: 14px;\n}\n\n.tags-container {\n    width: 409px;\n    height: 29px;\n}\n\n.tags {\n    background-color: #999999;\n    color: white;\n    border-radius: 12px;\n    margin-bottom: 20px;\n    font-size: 14px;\n}\n\n.released-by {\n    width:409px;\n    height: 18px;\n    margin-top: 10px;\n}\n\n.track-top {\n    margin-top:10px;\n}\n\n.track-bottom {\n    margin-bottom:10px;\n}\n\n.flex-lower-right {\n    display: flex;\n    flex-direction: column;\n}\n\n.comments-stats {\n    color: grey;\n    font-size: 12px;\n    width: 67px;\n    height: 16px;\n    padding-top:2px;\n}\n\n.comments-component {\n    margin-top: 20px;\n    padding-bottom: 7px;\n    display: flex;\n    flex-direction: column;    \n}\n\n.flex-row {\n    display: flex;\n    flex-direction: row;    \n}\n\n.comment-pic {\n    height: 40px;\n    width: 40px;\n    border-radius: 50%;\n    margin-right: 10px;\n}\n\n.flex-comment-container-top-bar-name {\n    font-size: 12px;\n    color: #999999;\n    margin-right: 2px;\n}\n\n.at {\n    font-size:11px;\n    color: #CCCCCC;\n    margin-right: 2px;\n}\n\n.flex-comment-container-top-bar-time {\n    font-size: 11px;\n    color: #999999;\n    margin-right: 162px;\n}\n\n.flex-comment-container-top-bar-posted {\n    font-size: 11px;\n    color: #999999;\n}\n\n.flex-comment-container-top-bar {\n    display: flex;\n    flex-direction: row;\n}\n\n.comment-text-asi {\n    font-size: 12px;\n    color: #333333;\n}\n\n.comment-container-asi {\n    display: flex;\n    flex-direction: row;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    margin-right: 10px;\n}\n\n/* .headshot-asi {\n    background-image: url(../../../public/headshot.jpg);\n} */", ""]);
+exports.push([module.i, ".comments-component{\n    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;\n    width: 560px;\n    padding-right: 30px;\n}\n\n.form{\n    width: 483px;\n    height: 23px;\n    margin-top: 6.5px;\n    margin-left: 6px;\n    padding-left: 9px;\n    padding-right: 9px;\n    padding-top: 0px;\n    padding-bottom:0px;\n}\n\n.headshot {\n    height: 40px;\n    width: 40px;\n}\n\n.divider{\n    width:150px;\n    height:auto;\n    display:inline-block;\n}\n\n.dividerLine{\n    width:100%;\n    height:auto;\n    display:inline-block;\n}\n\n\n.flex-container-commentbar {\n    display: flex;\n    flex-direction: row;\n    height: 40px;\n    width: 557px;\n    background-color: #f2f2f2;\n}\n\n.flex-container-interaction {\n    display: flex;\n    flex-direction: row;\n    height: 33px;\n    width: 175px;\n    padding-top: 3px;\n    padding-bottom: 4px;\n}\n\n.flex-container-commentbar-interaction {\n    display: flex;\n    flex-direction: column;\n    height: 89px;\n    width: 559px;\n    padding-top: 3px;\n}\n\n.artistPic {\n    height: 120px;\n    width: 120px;\n    border-radius: 50%;\n}\n\n.flex-container-artist {\n    display: flex;\n    flex-direction: column;\n    height: 250px;\n    width: 120px;\n    padding-right:30px;\n}\n\n.flex-container-stats {\n    display: flex;\n    flex-direction: row;\n    justify-content: right;\n    height: 33px;\n    width: 382px;\n    margin-left: 210px;\n    margin-top: 8px;\n}\n\n.flex-container-interaction-bar {\n    display: flex;\n    flex-direction: row;\n    height: 33px;\n    width: 557px;\n}\n\n.flex-lower {\n    display: flex;\n    flex-direction: row;\n    height: 33px;\n    width: 557px;\n}\n\n.rack {\n    margin-left: 25px;\n    font-size: 14px;\n}\n\n.likes {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfbGlrZXNfZ3JleTwvdGl0bGU+PHBhdGggZD0iTTEwLjgwNSAzYy0yLjAyIDAtMi44MDQgMi4zNDUtMi44MDQgMi4zNDVTNy4yMTMgMyA1LjE5NiAzQzMuNDk0IDMgMS43NDggNC4wOTYgMi4wMyA2LjUxNGMuMzQ0IDIuOTUzIDUuNzI1IDYuNDc5IDUuOTYzIDYuNDg3LjIzOC4wMDggNS43MzgtMy43MjIgNS45ODgtNi41QzE0LjE4OCA0LjIwMSAxMi41MDcgMyAxMC44MDUgM3oiIGZpbGw9IiMwMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.liked {\n  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCAxNiAxNiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+DQogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjAuMyAoNzg5MSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+DQogICAgPHRpdGxlPnN0YXRzX2xpa2VzX2dyZXk8L3RpdGxlPg0KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPg0KICAgIDxkZWZzLz4NCiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4NCiAgICAgICAgPHBhdGggZD0iTTEwLjgwNDk4MTgsMyBDOC43ODQ3MTU3OSwzIDguMDAwNjUyODUsNS4zNDQ4NjQ4NiA4LjAwMDY1Mjg1LDUuMzQ0ODY0ODYgQzguMDAwNjUyODUsNS4zNDQ4NjQ4NiA3LjIxMjk2Mzg3LDMgNS4xOTYwNDQ5NCwzIEMzLjQ5NDMxMzE4LDMgMS43NDgzNzQsNC4wOTU5MjY5NCAyLjAzMDA4OTk2LDYuNTE0MzA1MzIgQzIuMzczNzI3NjUsOS40NjY3Mzc3NSA3Ljc1NDkxOTE3LDEyLjk5Mjg3MzggNy45OTMxMDk1OCwxMy4wMDEwNTU3IEM4LjIzMTI5OTk4LDEzLjAwOTIzNzggMTMuNzMwOTgyOCw5LjI3ODUzNzggMTMuOTgxNDU5LDYuNTAxMjQwNSBDMTQuMTg3ODY0Nyw0LjIwMDk3MDIzIDEyLjUwNjcxMzYsMyAxMC44MDQ5ODE4LDMgWiIgaWQ9IkltcG9ydGVkLUxheWVycyIgZmlsbD0icmdiKDIzNSwgNzgsIDApIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIi8+DQogICAgPC9nPg0KPC9zdmc+DQo=);\n  background-repeat: no-repeat;\n  background-position: center;\n  border-radius: 15%;\n  margin-right: 5px;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  padding-left: 11px;\n  padding-right: 10px;\n  height: 26px;\n  width: 31px;\n}\n\n.reposts {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfcmVwb3N0PC90aXRsZT48cGF0aCBkPSJNMiA2djVjMCAxLjEwNS45MDIgMiAyLjAwOSAyaDYuOTg3SDEwbC0yLTJINFY2aC0uNUg2TDMgMyAwIDZoMnptNC0zaC0uOTk2IDYuOTg3QzEzLjA5OCAzIDE0IDMuODk1IDE0IDV2NWgtMlY1SDhMNiAzem0xMCA3aC02bDMgMyAzLTN6IiBmaWxsPSIjMjIyIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.reposted {\n  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjE2cHgiIHZpZXdCb3g9IjAgMCAxNiAxNiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+DQogIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4wLjMgKDc4OTEpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPg0KICA8dGl0bGU+c3RhdHNfcmVwb3N0PC90aXRsZT4NCiAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+DQogIDxkZWZzLz4NCiAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+DQogICAgPGcgaWQ9InJlcG9zdC0iIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIGZpbGw9InJnYigyNTUsIDg1LCAwKSI+DQogICAgICA8cGF0aCBkPSJNMiw2IEwyLDExLjAwMDM4NSBDMiwxMi4xMDQ3NDE5IDIuOTAxOTUwMzYsMTMgNC4wMDg1MzAyLDEzIEwxMC45OTU3MzQ5LDEzIEwxMC45OTU3MzQ5LDEzIEwxMCwxMyBMMTAsMTMgTDgsMTEgTDQsMTEgTDQsNiBMMy41LDYgTDYsNiBMMywzIEwwLDYgTDIsNiBMMiw2IFogTTYsMyBMNS4wMDQyNjUxLDMgTDExLjk5MTQ2OTgsMyBDMTMuMDk4MDQ5NiwzIDE0LDMuODk1MjU4MTIgMTQsNC45OTk2MTQ5OCBMMTQsMTAgTDEyLDEwIEwxMiw1IEw4LDUgTDYsMyBaIE0xNiwxMCBMMTAsMTAgTDEzLDEzIEwxNiwxMCBaIiBpZD0iUmVjdGFuZ2xlLTQzIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIi8+DQogICAgPC9nPg0KICA8L2c+DQo8L3N2Zz4NCg==);\n  background-repeat: no-repeat;\n  background-position: center;\n  border-radius: 15%;\n  margin-right: 5px;\n  padding-top: 2px;\n  padding-bottom: 2px;\n  padding-left: 11px;\n  padding-right: 10px;\n  height: 26px;\n  width: 31px;\n  fill: #ff5500;\n}\n\n.share {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c2hhcmU8L3RpdGxlPjxnIGZpbGw9IiMyMjIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTEyIDNDOC4wMzIgMyA3IDQuOCA3IDcuOGMxLjY0Mi0zIDQuMTU3LTIuNzk1IDUtMi43OTVWM3ptMC0ydjZsMy0zLTMtM3oiLz48cGF0aCBkPSJNMTQgN3Y0YTIgMiAwIDAgMS0yLjAwOSAySDQuMDFBMi4wMDYgMi4wMDYgMCAwIDEgMiAxMVY1YTIgMiAwIDAgMSAyLjAwOS0yaDMuMTlhNS45MzMgNS45MzMgMCAwIDAtMS4zODMgMkg0djZoOFY5bDItMnptLTMtMmgtLjA0bC4wNC0uMDFWNXoiLz48L2c+PC9zdmc+);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.artistName {\n    width: 139.73px;\n    height: 16px;\n    font-size: 14px;\n    font-weight: light;\n}\n\n.followButton {\n    height: 22px;\n    width: 49.94px;\n    background-color: #ff5500;\n    color: white;\n    border-radius: 15%;\n    margin-top: 8px;\n    margin-bottom: 9px;\n}\n\n.next{\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMHoiLz48cGF0aCBmaWxsPSIjMjIyIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik00IDloMTB2Mkg0Vjl6bTAgNGgxMHYySDR2LTJ6bTAtOGg4djJINFY1em0xMC00bDQgMy00IDNWMXoiLz48L2c+PC9zdmc+);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.more{\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iNCIgdmlld0JveD0iMCAwIDE0IDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPm1vcmU8L3RpdGxlPjxnIGZpbGw9IiMyMjIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiLz48Y2lyY2xlIGN4PSI3IiBjeT0iMiIgcj0iMiIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMiIgcj0iMiIvPjwvZz48L3N2Zz4=);\n    background-repeat: no-repeat;\n    background-position: center;\n    border-radius: 15%;\n    margin-right: 5px;\n    padding-top: 2px;\n    padding-bottom: 2px;\n    padding-left: 11px;\n    padding-right: 10px;\n    height: 26px;\n    width: 31px;\n}\n\n.followercount {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCI+PHBhdGggZmlsbD0icmdiYSgxNTMsIDE1MywgMTUzLCAwLjcpIiBkPSJNMTguNCAxOC41bDIuNSA1IC4yLjVIMjhsLTIuMS00LjMtNC4xLTEuNXYtMi41YzEuMi0xLjEgMS44LTMuMiAxLjgtNS4xIDAtMi4xLTItMy42LTMuNS0zLjZzLTMuNSAxLjYtMy41IDMuNmMwIDEuOS41IDQgMS44IDUuMXYyLjVoLS4xbC4xLjN6Ii8+PHBhdGggZmlsbD0iIzk5OSIgZD0iTTE3LjUgMTlsLTUtMS44di0zYzEuNC0xLjIgMi0zLjggMi01LjkgMC0yLjQtMi4zLTQuMy00LTQuMy0xLjcgMC00IDEuOC00IDQuMyAwIDIuMi42IDQuNyAyIDUuOXYzbC01IDEuOEwxIDI0aDE5bC0yLjUtNXoiLz48L3N2Zz4=);\n}\n\n.plays {\n    color: grey;\n    font-size: 12px;\n    width: 49px;\n    height: 16px;\n}\n\n.plays-icon {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfcGxheSA0PC90aXRsZT48cGF0aCBkPSJNNCAxM1YzbDkgNS05IDV6IiBmaWxsPSIjOTk5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);\n    display: inline-block;\n    right: 100%;\n    height: 16px;\n    width: 16px;\n}\n\n\n.interaction-tiny-flex {\n    display: flex;\n    flex-direction: row;\n}\n\n.likes-icon {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfbGlrZXNfZ3JleTwvdGl0bGU+PHBhdGggZD0iTTEwLjgwNSAzYy0yLjAyIDAtMi44MDQgMi4zNDUtMi44MDQgMi4zNDVTNy4yMTMgMyA1LjE5NiAzQzMuNDk0IDMgMS43NDggNC4wOTYgMi4wMyA2LjUxNGMuMzQ0IDIuOTUzIDUuNzI1IDYuNDc5IDUuOTYzIDYuNDg3LjIzOC4wMDggNS43MzgtMy43MjIgNS45ODgtNi41QzE0LjE4OCA0LjIwMSAxMi41MDcgMyAxMC44MDUgM3oiIGZpbGw9IiM5OTkiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);\n    display: inline-block;\n    right: 100%;\n    height: 16px;\n    width: 16px;\n}\n\n.likes-stats {\n    color: grey;\n    font-size: 12px;\n    cursor: pointer;\n    width: 49px;\n    height: 16px;\n}\n\n.reposts-icon {\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfcmVwb3N0PC90aXRsZT48cGF0aCBkPSJNMiA2djVjMCAxLjEwNS45MDIgMiAyLjAwOSAyaDYuOTg3SDEwbC0yLTJINFY2aC0uNUg2TDMgMyAwIDZoMnptNC0zaC0uOTk2IDYuOTg3QzEzLjA5OCAzIDE0IDMuODk1IDE0IDV2NWgtMlY1SDhMNiAzem0xMCA3aC02bDMgMyAzLTN6IiBmaWxsPSIjOTk5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);\n    display: inline-block;\n    right: 100%;\n    height: 16px;\n    width: 16px;\n}\n\n.reposts-stats {\n    color: grey;\n    font-size: 12px;\n    cursor: pointer;\n    width: 49px;\n    height: 16px;\n}\n\n\n\n.fol-stats {\n    color: grey;\n    font-size: 12px;\n    width: 30px;\n    height: 14px;\n    margin-right: 9px;\n\n}\n\n.stats-artist {\n    display: flex;\n    flex-direction: row;\n    width: 120px;\n    height: 9px;\n    padding-top: 9px;\n    padding-bottom: 9px;\n}\n\n.report-icon {\n    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAQAAACR313BAAAAnElEQVR4AZXNUQqDMBCE4TlWKApbiGBEpVYphQb6knvkaDnalLWK60uhfjA+5CfBX1+SBAvJiPKmCc7HizwZaQJ73MvEucx4FRtsPy+BA8c84pHtDetUcmXDwC53uGf7BBKcXFhTg7a0uJWFR4B0ChoMnLgGEhGBqEwQuAayQOmoLaihQS89vnQ2+w1ePHbwhgaVVDjoGE4cLLifPnBzeJR4+XAqAAAAAElFTkSuQmCC);\n    background-repeat: no-repeat;\n    height: 20px;\n    width: 20px;\n    font-size: 12px;\n}\n\n.flex-container-report {\n    display: flex;\n    flex-direction: row;\n}\n\n.report {\n    font-size: 12px;\n}\n\n.track-info {\n    font-size: 14px;\n}\n\n.tags-container {\n    width: 409px;\n    height: 29px;\n}\n\n.tags {\n    background-color: #999999;\n    color: white;\n    border-radius: 12px;\n    margin-bottom: 20px;\n    font-size: 14px;\n}\n\n.released-by {\n    width:409px;\n    height: 18px;\n    margin-top: 10px;\n}\n\n.track-top {\n    margin-top:10px;\n}\n\n.track-bottom {\n    margin-bottom:10px;\n}\n\n.flex-lower-right {\n    display: flex;\n    flex-direction: column;\n}\n\n.comments-stats {\n    color: grey;\n    font-size: 12px;\n    width: 67px;\n    height: 16px;\n    padding-top:2px;\n}\n\n.comments-component {\n    margin-top: 20px;\n    padding-bottom: 7px;\n    display: flex;\n    flex-direction: column;    \n}\n\n.flex-row {\n    display: flex;\n    flex-direction: row;    \n}\n\n.comment-pic {\n    height: 40px;\n    width: 40px;\n    border-radius: 50%;\n    margin-right: 10px;\n}\n\n.flex-comment-container-top-bar-name {\n    font-size: 12px;\n    color: #999999;\n    margin-right: 2px;\n}\n\n.at {\n    font-size:11px;\n    color: #CCCCCC;\n    margin-right: 2px;\n}\n\n.flex-comment-container-top-bar-time {\n    font-size: 11px;\n    color: #999999;\n    margin-right: 162px;\n}\n\n.flex-comment-container-top-bar-posted {\n    font-size: 11px;\n    color: #999999;\n}\n\n.flex-comment-container-top-bar {\n    display: flex;\n    flex-direction: row;\n}\n\n.comment-text-asi {\n    font-size: 12px;\n    color: #333333;\n}\n\n.comment-container-asi {\n    display: flex;\n    flex-direction: row;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    margin-right: 10px;\n}\n\n/* .headshot-asi {\n    background-image: url(../../../public/headshot.jpg);\n} */", ""]);
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1527,7 +1671,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1546,7 +1690,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1568,10 +1712,10 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var React = __webpack_require__(1);
-var _assign = __webpack_require__(3);
+var _assign = __webpack_require__(4);
 var Scheduler = __webpack_require__(6);
 var checkPropTypes = __webpack_require__(5);
-var tracing = __webpack_require__(25);
+var tracing = __webpack_require__(26);
 
 // Do not require this module directly! Use normal `invariant` calls with
 // template literal strings. The messages will be converted to ReactError during
@@ -29480,7 +29624,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29496,7 +29640,7 @@ module.exports = reactDom;
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),n=__webpack_require__(3),r=__webpack_require__(6);function t(a){for(var b=a.message,c="https://reactjs.org/docs/error-decoder.html?invariant="+b,d=1;d<arguments.length;d++)c+="&args[]="+encodeURIComponent(arguments[d]);a.message="Minified React error #"+b+"; visit "+c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ";return a}if(!aa)throw t(Error(227));var ba=null,ca={};
+var aa=__webpack_require__(1),n=__webpack_require__(4),r=__webpack_require__(6);function t(a){for(var b=a.message,c="https://reactjs.org/docs/error-decoder.html?invariant="+b,d=1;d<arguments.length;d++)c+="&args[]="+encodeURIComponent(arguments[d]);a.message="Minified React error #"+b+"; visit "+c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ";return a}if(!aa)throw t(Error(227));var ba=null,ca={};
 function da(){if(ba)for(var a in ca){var b=ca[a],c=ba.indexOf(a);if(!(-1<c))throw t(Error(96),a);if(!ea[c]){if(!b.extractEvents)throw t(Error(97),a);ea[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;if(fa.hasOwnProperty(h))throw t(Error(99),h);fa[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ha(k[e],g,h);e=!0}else f.registrationName?(ha(f.registrationName,g,h),e=!0):e=!1;if(!e)throw t(Error(98),d,a);}}}}
 function ha(a,b,c){if(ia[a])throw t(Error(100),a);ia[a]=b;ja[a]=b.eventTypes[c].dependencies}var ea=[],fa={},ia={},ja={};function ka(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}var la=!1,ma=null,na=!1,oa=null,pa={onError:function(a){la=!0;ma=a}};function qa(a,b,c,d,e,f,g,h,k){la=!1;ma=null;ka.apply(pa,arguments)}
 function ra(a,b,c,d,e,f,g,h,k){qa.apply(this,arguments);if(la){if(la){var l=ma;la=!1;ma=null}else throw t(Error(198));na||(na=!0,oa=l)}}var sa=null,ta=null,ua=null;function va(a,b,c){var d=a.type||"unknown-event";a.currentTarget=ua(c);ra(d,b,void 0,a);a.currentTarget=null}function wa(a,b){if(null==b)throw t(Error(30));if(null==a)return b;if(Array.isArray(a)){if(Array.isArray(b))return a.push.apply(a,b),a;a.push(b);return a}return Array.isArray(b)?[a].concat(b):[a,b]}
@@ -29780,7 +29924,7 @@ rendererPackageName:"react-dom"});var xk={default:wk},yk=xk&&wk||xk;module.expor
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29801,7 +29945,7 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(3);
+var _assign = __webpack_require__(4);
 var checkPropTypes = __webpack_require__(5);
 
 // TODO: this is special because it gets imported during build.
@@ -32120,7 +32264,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32133,7 +32277,7 @@ module.exports = react;
  * LICENSE file in the root directory of this source tree.
  */
 
-var h=__webpack_require__(3),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.forward_ref"):60112,y=n?Symbol.for("react.suspense"):60113,aa=n?Symbol.for("react.suspense_list"):60120,ba=n?Symbol.for("react.memo"):
+var h=__webpack_require__(4),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.forward_ref"):60112,y=n?Symbol.for("react.suspense"):60113,aa=n?Symbol.for("react.suspense_list"):60120,ba=n?Symbol.for("react.memo"):
 60115,ca=n?Symbol.for("react.lazy"):60116;n&&Symbol.for("react.fundamental");n&&Symbol.for("react.responder");n&&Symbol.for("react.scope");var z="function"===typeof Symbol&&Symbol.iterator;
 function A(a){for(var b=a.message,c="https://reactjs.org/docs/error-decoder.html?invariant="+b,d=1;d<arguments.length;d++)c+="&args[]="+encodeURIComponent(arguments[d]);a.message="Minified React error #"+b+"; visit "+c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ";return a}var B={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},C={};
 function D(a,b,c){this.props=a;this.context=b;this.refs=C;this.updater=c||B}D.prototype.isReactComponent={};D.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw A(Error(85));this.updater.enqueueSetState(this,a,b,"setState")};D.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function E(){}E.prototype=D.prototype;function F(a,b,c){this.props=a;this.context=b;this.refs=C;this.updater=c||B}var G=F.prototype=new E;
@@ -32152,7 +32296,7 @@ isValidElement:N,version:"16.10.2",unstable_withSuspenseConfig:function(a,b){var
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32589,7 +32733,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32606,7 +32750,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interac
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33636,7 +33780,7 @@ exports.unstable_Profiling = unstable_Profiling;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33665,22 +33809,22 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(22);
+  module.exports = __webpack_require__(23);
 } else {
-  module.exports = __webpack_require__(21);
+  module.exports = __webpack_require__(22);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33968,7 +34112,7 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33994,44 +34138,52 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var path = __webpack_require__(4);
+var path = __webpack_require__(3);
 
-var Liked = function (_React$Component) {
-  _inherits(Liked, _React$Component);
+var Reposted = function (_React$Component) {
+  _inherits(Reposted, _React$Component);
 
-  function Liked(props) {
-    _classCallCheck(this, Liked);
+  function Reposted(props) {
+    _classCallCheck(this, Reposted);
 
-    var _this = _possibleConstructorReturn(this, (Liked.__proto__ || Object.getPrototypeOf(Liked)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Reposted.__proto__ || Object.getPrototypeOf(Reposted)).call(this, props));
 
-    _this.state = {
-      isLiked: _this.props.liked
-    };
+    _this.handleChange = _this.handleChange.bind(_this);
     return _this;
   }
 
-  _createClass(Liked, [{
+  _createClass(Reposted, [{
     key: 'handleChange',
     value: function handleChange() {
-      var currentStatus = this.state.isLiked;
-      this.setState({
-        isLiked: !currentStatus
-      });
+      var currentStatus = this.props.reposted;
+      if (currentStatus === true) {
+        this.props.onRepostChange(false);
+      } else {
+        this.props.onRepostChange(true);
+      }
     }
   }, {
     key: 'render',
     value: function render() {
-      if (this.state.isLiked) {
-        return _react2.default.createElement('button', { 'class': 'liked', onClick: this.handleChange.bind(this) });
+      if (this.props.reposted) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement('button', { 'class': 'reposted', onClick: this.handleChange })
+        );
       }
-      return _react2.default.createElement('button', { 'class': 'likes', onClick: this.handleChange.bind(this) });
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement('button', { 'class': 'reposts', onClick: this.handleChange.bind(this) })
+      );
     }
   }]);
 
-  return Liked;
+  return Reposted;
 }(_react2.default.Component);
 
-exports.default = Liked;
+exports.default = Reposted;
 
 /***/ })
 /******/ ]);

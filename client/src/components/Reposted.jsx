@@ -2,37 +2,37 @@ import React from 'react';
 import './styles.css';
 const path = require('path');
 
-class Liked extends React.Component {
+class Reposted extends React.Component {
   constructor(props){
     super(props);
     this.handleChange = this.handleChange.bind(this)
   }
   
   handleChange() {
-    var currentStatus = this.props.liked;
+    var currentStatus = this.props.reposted;
     if(currentStatus === true) {
-      this.props.onLikeChange(false)
+      this.props.onRepostChange(false)
     } else {
-      this.props.onLikeChange(true)
+      this.props.onRepostChange(true)
     }
   }
 
   
   render() {
-    if(this.props.liked) {
+    if(this.props.reposted) {
       return(
         <div>
-          <button class='liked' onClick={this.handleChange}></button>
+          <button class='reposted' onClick={this.handleChange}></button>
         </div>
         
       );
     }
     return(
       <div>
-          <button class='likes' onClick={this.handleChange.bind(this)}></button>
+          <button class='reposts' onClick={this.handleChange.bind(this)}></button>
       </div>
     );
   }
 }
 
-export default Liked;
+export default Reposted;

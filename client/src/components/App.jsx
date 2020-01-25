@@ -10,8 +10,13 @@ class App extends React.Component {
         super(props);
         this.state = {
             comments: [],
-            liked: true
+            liked: false,
+            likeCount: 7533,
+            reposted: false,
+            repostCount: 507
         }
+        this.handleLikeChangeApp = this.handleLikeChangeApp.bind(this);
+        this.handleRepostChangeApp = this.handleRepostChangeApp.bind(this);
     };
 
 
@@ -24,10 +29,42 @@ class App extends React.Component {
         })
     }
 
+    handleLikeChangeApp(likeStatus) {
+      var newLikeCount = this.state.likeCount;
+      if(likeStatus===true){
+        newLikeCount++;
+      } else {
+        newLikeCount--;
+      }
+      this.setState({
+        liked: likeStatus,
+        likeCount: newLikeCount
+      })
+    }
+
+    handleRepostChangeApp(repostStatus) {
+      var newRepostCount = this.state.repostCount;
+      if(repostStatus===true){
+        newRepostCount++;
+      } else {
+        newRepostCount--;
+      }
+      this.setState({
+        reposted: repostStatus,
+        repostCount: newRepostCount
+      })
+    }
+
     render() {
         return(
             <div className='comments-component'>
-                <Commentbar liked={this.state.liked}/>
+                <Commentbar liked={this.state.liked} 
+                            likedNum={this.state.likeCount} 
+                            handleLikeChangeApp={this.handleLikeChangeApp}
+                            reposted={this.state.reposted}
+                            repostCount={this.state.repostCount}
+                            handleRepostChangeApp={this.handleRepostChangeApp}
+                />
                 <div className='flex-lower'>
                     <ArtistInfo/>
                     <div className='flex-lower-right'>

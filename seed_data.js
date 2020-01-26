@@ -34,16 +34,17 @@ module.exports = [
         picture: './headshot.jpg',
         followers: 2,
         location: 'Berkeley, CA'
-      },
-      {
-        timeInSongSeconds: 128,
-        timePosted: new Date('October 14, 2019 00:00:00'),
-        commentText: 'fire!!!!',
-        username: 'Aruna Iyer',
-        picture: './headshot.jpg',
-        followers: 2,
-        location: 'Berkeley, CA'
       }
+      // ,
+      // {
+      //   timeInSongSeconds: 128,
+      //   timePosted: new Date('October 14, 2019 00:00:00'),
+      //   commentText: 'fire!!!!',
+      //   username: 'Aruna Iyer',
+      //   picture: './headshot.jpg',
+      //   followers: 2,
+      //   location: 'Berkeley, CA'
+      // }
     ]
   }
 ];

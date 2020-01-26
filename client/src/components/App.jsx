@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 import Commentbar from './Commentbar.jsx';
 import ArtistInfo from './ArtistInfo.jsx';
 import TrackInfo from './TrackInfo.jsx';
@@ -10,6 +11,7 @@ class App extends React.Component {
         super(props);
         this.state = {
             comments: [],
+            numberComments: 5000,
             liked: false,
             likeCount: 7533,
             reposted: false,
@@ -18,7 +20,6 @@ class App extends React.Component {
         this.handleLikeChangeApp = this.handleLikeChangeApp.bind(this);
         this.handleRepostChangeApp = this.handleRepostChangeApp.bind(this);
     };
-
 
     handleAdd(newComment){
         Axios.post('/newcomment', newcomment)
@@ -56,23 +57,23 @@ class App extends React.Component {
     }
 
     render() {
-        return(
-            <div className='comments-component'>
-                <Commentbar liked={this.state.liked} 
-                            likedNum={this.state.likeCount} 
-                            handleLikeChangeApp={this.handleLikeChangeApp}
-                            reposted={this.state.reposted}
-                            repostCount={this.state.repostCount}
-                            handleRepostChangeApp={this.handleRepostChangeApp}
-                />
-                <div className='flex-lower'>
-                    <ArtistInfo/>
-                    <div className='flex-lower-right'>
-                        <TrackInfo/>
-                        <Comments/>
-                    </div>
-                </div>
+      return(
+        <div className='comments-component'>
+          <Commentbar liked={this.state.liked} 
+                      likedNum={this.state.likeCount} 
+                      handleLikeChangeApp={this.handleLikeChangeApp}
+                      reposted={this.state.reposted}
+                      repostCount={this.state.repostCount}
+                      handleRepostChangeApp={this.handleRepostChangeApp}
+          />
+          <div className='flex-lower'>
+            <ArtistInfo/>
+            <div className='flex-lower-right'>
+              <TrackInfo/>
+              <Comments numberComments={this.state.numberComments}/>
             </div>
+          </div>
+        </div>
         )
     }
 }

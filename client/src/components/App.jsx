@@ -62,10 +62,14 @@ class App extends React.Component {
     getSongs() {
       Axios.get('/songs')
         .then((songs) => {
-          // this.setState({
-          //   stories: stories.data
-          // })
-          console.log(songs.data)
+          this.setState({
+            comments: songs.data['0'].comments,
+            numberComments: songs.data['0'].comments.length,
+            liked: songs.data['0'].userInteraction.liked,
+            likeCount: songs.data['0'].likes,
+            reposted: songs.data['0'].userInteraction.reposted,
+          })
+          console.log(songs.data['0'])
         })
     }
 

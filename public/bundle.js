@@ -1109,11 +1109,17 @@ var App = function (_React$Component) {
   }, {
     key: 'getSongs',
     value: function getSongs() {
+      var _this2 = this;
+
       _axios2.default.get('/songs').then(function (songs) {
-        // this.setState({
-        //   stories: stories.data
-        // })
-        console.log(songs.data);
+        _this2.setState({
+          comments: songs.data['0'].comments,
+          numberComments: songs.data['0'].comments.length,
+          liked: songs.data['0'].userInteraction.liked,
+          likeCount: songs.data['0'].likes,
+          reposted: songs.data['0'].userInteraction.reposted
+        });
+        console.log(songs.data['0']);
       });
     }
 

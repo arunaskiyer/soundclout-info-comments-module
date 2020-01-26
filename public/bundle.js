@@ -1062,7 +1062,6 @@ var App = function (_React$Component) {
     };
     _this.handleLikeChangeApp = _this.handleLikeChangeApp.bind(_this);
     _this.handleRepostChangeApp = _this.handleRepostChangeApp.bind(_this);
-    // this.getExample = this.getExample.bind(this);
     _this.getSongs = _this.getSongs.bind(_this);
     return _this;
   }
@@ -1122,22 +1121,9 @@ var App = function (_React$Component) {
         console.log(songs.data['0']);
       });
     }
-
-    // getExample() {
-    //   Axios.get('/example')
-    //     .then(() => {
-    //       // this.setState({
-    //       //   stories: stories.data
-    //       // })
-    //       console.log('hi from client')
-    //     })
-    // }
-
-
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      // this.getExample();
       this.getSongs();
     }
   }, {

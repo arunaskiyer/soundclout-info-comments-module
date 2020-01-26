@@ -20,7 +20,6 @@ class App extends React.Component {
       }
     this.handleLikeChangeApp = this.handleLikeChangeApp.bind(this);
     this.handleRepostChangeApp = this.handleRepostChangeApp.bind(this);
-    // this.getExample = this.getExample.bind(this);
     this.getSongs = this.getSongs.bind(this);
     };
 
@@ -73,19 +72,7 @@ class App extends React.Component {
         })
     }
 
-    // getExample() {
-    //   Axios.get('/example')
-    //     .then(() => {
-    //       // this.setState({
-    //       //   stories: stories.data
-    //       // })
-    //       console.log('hi from client')
-    //     })
-    // }
-
-
     componentDidMount(){
-      // this.getExample();
       this.getSongs();
     }
 

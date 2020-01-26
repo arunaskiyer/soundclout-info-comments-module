@@ -4,31 +4,34 @@ import Commentbar from './Commentbar.jsx';
 import ArtistInfo from './ArtistInfo.jsx';
 import TrackInfo from './TrackInfo.jsx';
 import Comments from './Comments';
+import Axios from 'axios';
 import './styles.css';
 
 class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            comments: [],
-            numberComments: 5000,
-            liked: false,
-            likeCount: 7533,
-            reposted: false,
-            repostCount: 507
-        }
-        this.handleLikeChangeApp = this.handleLikeChangeApp.bind(this);
-        this.handleRepostChangeApp = this.handleRepostChangeApp.bind(this);
+  constructor(props){
+    super(props);
+      this.state = {
+        comments: [],
+        numberComments: 5000,
+        liked: false,
+        likeCount: 7533,
+        reposted: false,
+        repostCount: 507
+      }
+    this.handleLikeChangeApp = this.handleLikeChangeApp.bind(this);
+    this.handleRepostChangeApp = this.handleRepostChangeApp.bind(this);
+    // this.getExample = this.getExample.bind(this);
+    this.getSongs = this.getSongs.bind(this);
     };
 
-    handleAdd(newComment){
-        Axios.post('/newcomment', newcomment)
-        .then((songComments) => {
-            this.setState({
-                comments: comments.data,
-            })
-        })
-    }
+    // handleAdd(newComment){
+    //     Axios.post('/newcomment', newcomment)
+    //     .then((songComments) => {
+    //         this.setState({
+    //             comments: comments.data,
+    //         })
+    //     })
+    // }
 
     handleLikeChangeApp(likeStatus) {
       var newLikeCount = this.state.likeCount;
@@ -54,6 +57,32 @@ class App extends React.Component {
         reposted: repostStatus,
         repostCount: newRepostCount
       })
+    }
+
+    getSongs() {
+      Axios.get('/songs')
+        .then((songs) => {
+          // this.setState({
+          //   stories: stories.data
+          // })
+          console.log(songs.data)
+        })
+    }
+
+    // getExample() {
+    //   Axios.get('/example')
+    //     .then(() => {
+    //       // this.setState({
+    //       //   stories: stories.data
+    //       // })
+    //       console.log('hi from client')
+    //     })
+    // }
+
+
+    componentDidMount(){
+      // this.getExample();
+      this.getSongs();
     }
 
     render() {

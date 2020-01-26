@@ -4,7 +4,9 @@ const path = require('path');
 const bodyParser = require('body-parser');
 var commentsRouter = require('./routers/comments.js');
 var cors = require('cors');
+var mongoose = require('mongoose');
 
+mongoose.connect('mongodb://localhost/soundclout');
 
 // Set PORT# to listen on
 const PORT = 4000;
@@ -16,6 +18,14 @@ app.use(cors());
 
 // Serve static files
 app.use(express.static(path.join(__dirname, '../public')));
+
+
+// // Find songs from database
+// app.get('/example', hiFunction)
+
+// Find songs from database
+app.get('/songs', commentsRouter)
+
 
 // Eventually there will be get and post request handlers here!
 // app.post('localhost:4000/newcomment', commentsRouter)

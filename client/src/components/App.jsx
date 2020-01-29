@@ -90,7 +90,7 @@ class App extends React.Component {
             <ArtistInfo/>
             <div className='flex-lower-right'>
               <TrackInfo/>
-              <Comments numberComments={this.state.numberComments}/>
+              <Comments numberComments={this.state.numberComments} comments={this.state.comments}/>
             </div>
           </div>
         </div>
